@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.1-preview.2"
+#r "nuget: Pxl, 0.0.1-preview.4"
 
 open System
 open Pxl
