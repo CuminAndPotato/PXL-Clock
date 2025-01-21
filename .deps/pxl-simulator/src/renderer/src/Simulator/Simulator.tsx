@@ -72,7 +72,7 @@ function Simulator() {
 
   return (
     <div id="simulator">
-      <h1>PXL Simulator</h1>
+      <h1>PXL-Clock Simulator</h1>
       <div className="ar">
         <LedMatrix frame={frame} />
       </div>
