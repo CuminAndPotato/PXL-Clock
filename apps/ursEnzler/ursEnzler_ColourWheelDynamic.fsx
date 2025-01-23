@@ -223,7 +223,7 @@ let seconds minute second =
         pxls.set(coloredPixels.value)
     }
 
-[<AppV1(name = "UrsEnzler_ColourWheel")>]
+[<AppV1(name = "UrsEnzler_ColourWheelDynamic")>]
 let all =
     scene {
         bg.color(hsva 195.0 0.9 0.2 0.4)
