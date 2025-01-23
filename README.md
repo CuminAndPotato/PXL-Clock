@@ -35,6 +35,18 @@ Follow the [**#pxlclock hashtag**](https://bsky.app/hashtag/PXLclock) on **Blues
 
 ---
 
+## PXL-Clock Coming Soon
+
+We’re working hard to bring the PXL-Clock to life! 🚀
+
+There’s still a lot to do — certifications, production, and all the little details that make this a fine product. We’re fully committed to delivering something amazing, and we’ll keep you updated every step of the way.
+
+Stay in the loop by following the #pxlclock hashtag on our channels for the latest news and progress updates.
+
+Thank you for your patience and support! 💡
+
+---
+
 ## Table of Contents
 1. [Get In Touch](#get-in-touch)
 2. [About PXL-Clock](#about-pxl-clock)  
