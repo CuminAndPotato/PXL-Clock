@@ -14,11 +14,11 @@ We’re excited to see what the community will build around the PXL-Clock. Below
 
 ---
 
-## PXL-Clock Coming Soon
+## Order Your PXL-Clock!
 
-We’re working hard to bring the PXL-Clock to life! 🚀
+Exciting news: ordering the PXL-Clock will soon be possible! 🎉
 
-There’s still a lot to do — certifications, production, and all the little details that make this a fine product. We’re fully committed to delivering something amazing, and we’ll keep you updated every step of the way.
+We’re currently working on the first 100 units, the MK1 edition! We’re in the certification and refining all the little details that make this a fine product. We’re fully committed to delivering something amazing, and we’ll keep you updated every step of the way.
 
 Stay in the loop by following the #pxlclock hashtag on our channels for the latest news and progress updates.
 
@@ -47,7 +47,7 @@ Follow the [**#pxlclock hashtag**](https://bsky.app/hashtag/PXLclock) on **Blues
 ---
 
 ## Table of Contents
-1. [PXL-Clock Coming Soon](#pxl-clock-coming-soon)
+1. [Order Your PXL-Clock](#order-your-pxl-clock)
 2. [Get In Touch](#get-in-touch)
 3. [About PXL-Clock](#about-pxl-clock)  
 4. [Releases](#releases)  
