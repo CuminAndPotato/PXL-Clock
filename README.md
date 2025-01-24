@@ -14,6 +14,18 @@ We’re excited to see what the community will build around the PXL-Clock. Below
 
 ---
 
+## Order Your PXL-Clock!
+
+Exciting news: ordering the PXL-Clock will soon be possible! 🎉
+
+We’re currently working on the first 100 units, the MK1 edition! We’re in the certification and refining all the little details that make this a fine product. We’re fully committed to delivering something amazing, and we’ll keep you updated every step of the way.
+
+Stay in the loop by following the #pxlclock hashtag on our channels for the latest news and progress updates.
+
+Thank you for your patience and support! 💡
+
+---
+
 ## Get In Touch
 
 ### Discord
@@ -32,17 +44,17 @@ Get in touch with us and others on our [**Discord Server**](https://discord.gg/K
 
 Follow the [**#pxlclock hashtag**](https://bsky.app/hashtag/PXLclock) on **Bluesky** for getting news and see what others do!
 
-
 ---
 
 ## Table of Contents
-1. [Get In Touch](#get-in-touch)
-2. [About PXL-Clock](#about-pxl-clock)  
-3. [Releases](#releases)  
-4. [Filing Issues and Ideas](#filing-issues-and-ideas)  
-5. [Developing Your Own Apps](#developing-your-own-apps)  
-6. [Contributing](#contributing)  
-7. [License](LICENSE.md)
+1. [Order Your PXL-Clock](#order-your-pxl-clock)
+2. [Get In Touch](#get-in-touch)
+3. [About PXL-Clock](#about-pxl-clock)  
+4. [Releases](#releases)  
+5. [Filing Issues and Ideas](#filing-issues-and-ideas)  
+6. [Developing Your Own Apps](#developing-your-own-apps)  
+7. [Contributing](#contributing)  
+8. [License](LICENSE.md)
 
 ---
 
