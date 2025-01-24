@@ -117,7 +117,7 @@ let time (now: DateTimeOffset) =
             .color(hsva 222 0.6 0.8 1)
     }
 
-type Snowflake = Falling | Lying | Empty
+type Snowflake = Falling | Lying | Ice | Empty
 type World = Snowflake array
 
 let getInitialWorld hours minutes =
@@ -126,7 +126,7 @@ let getInitialWorld hours minutes =
             let line = digit[r]
             for c in 0..3 do
                 if line[c] = 'X' then
-                    world[(r + y) * 24 + c + x] <- Snowflake.Lying
+                    world[(r + y) * 24 + c + x] <- Snowflake.Ice
 
     let world = Array.create (24*24) Snowflake.Empty
     let h1 = hours / 10
@@ -139,8 +139,8 @@ let getInitialWorld hours minutes =
     drawDigit numbers[m1] world 13 19
     drawDigit numbers[m2] world 18 19
 
-    world[(20*24) + 11] <- Snowflake.Lying
-    world[(22*24) + 11] <- Snowflake.Lying
+    world[(20*24) + 11] <- Snowflake.Ice
+    world[(22*24) + 11] <- Snowflake.Ice
 
     world
 
@@ -156,21 +156,34 @@ let getNext (world: World): World=
 
         let state =
             match above, current, below, leftHill, rightHill with
+            | _, Ice, _, _, _ -> Ice
             | None, Empty, _, _, _ ->
                 if Random.Shared.Next(10) > 8 && i > lastSnowflakeCreated + 1 then
                     lastSnowflakeCreated <- i
                     Snowflake.Falling else Snowflake.Empty
             | None, Falling, Some Empty, _, _ -> Empty
             | None, Falling, Some Lying, _, _ -> Lying
+            | None, Falling, Some Ice, _, _ -> Lying
             | _, Lying, _, _, _ -> Lying
             | Some Falling, Empty, Some Empty, _, _ -> Falling
             | _, Falling, Some Lying, _, _ -> Lying
+            | _, Falling, Some Ice, _, _ -> Lying
             | Some Empty, Falling, Some Empty, _, _ -> Empty
             | Some Empty, Falling, Some Falling, _, _ -> Empty
-            | Some Empty, Empty, _, Some Lying, _ -> Falling
-            | Some Empty, Empty, _, _, Some Lying -> Falling
+
+            // falling hill from left
+            | _, Empty, Some Lying, Some Lying, _ -> Falling
+            | _, Empty, Some Ice, Some Lying, _ -> Falling
+            | _, Empty, None, Some Lying, _ -> Falling
+
+            // falling hill from right
+            | _, Empty, Some Lying, _, Some Lying -> Falling
+            | _, Empty, Some Ice, _, Some Lying -> Falling
+            | _, Empty, None, _, Some Lying -> Falling
+
             | Some Lying, _, _, _, _ -> Lying
             | Some Falling, Empty, Some Lying, _, _ -> Falling
+            | Some Falling, Empty, Some Ice, _, _ -> Falling
             | _, Falling, None, _, _ -> Lying
             | Some Falling, Empty, None, _, _ -> Falling
             | _ -> Empty
@@ -179,6 +192,7 @@ let getNext (world: World): World=
 
 let snowflake = hsva 0 0 1 1
 let empty = hsva 200 0.8 0.1 1.0
+let ice = hsva 222 0.6 0.8 1.0
 let getSnowColor snowHeight = hsva 220 (0.1 + float snowHeight * 0.025) 1.0 1.0
 
 let getSnowHeight (world: World) c r =
@@ -187,7 +201,8 @@ let getSnowHeight (world: World) c r =
         match world[row * 24 + c] with
         | Empty
         | Falling -> 0
-        | Lying -> 1)
+        | Lying
+        | Ice -> 1)
 
 let snowing =
     scene {
@@ -209,34 +224,25 @@ let snowing =
             else
                 worldState.value
 
-        world |> Array.mapi (fun i cell ->
+        world
+        |> Array.mapi (fun i cell ->
             match cell with
             | Snowflake.Empty -> empty
             | Snowflake.Falling -> snowflake
             | Snowflake.Lying ->
                 let height = getSnowHeight world (i % 24) (i / 24)
                 getSnowColor height
+            | Snowflake.Ice -> ice
         )
         |> pxls.set
-
-        // for r in 0..23 do
-        //     for c in 0..23 do
-        //         let color =
-        //             match world[(r * 24) + c] with
-        //             | Snowflake.Empty -> empty
-        //             | Snowflake.Falling -> snowflake
-        //             | Snowflake.Lying ->
-        //                 let height = getSnowHeight world c r
-        //                 getSnowColor height
-        //         pxl.xy(c,r).stroke(color).noAntiAlias()
     }
 
-[<AppV1(name = "UrsEnzler_LetItSnow")>]
+[<AppV1(name = "Urs Enzler - Let it snow")>]
 let all =
     scene {
         let! ctx = getCtx ()
         snowing
-        time ctx.now
+        //time ctx.now
     }
 
 
