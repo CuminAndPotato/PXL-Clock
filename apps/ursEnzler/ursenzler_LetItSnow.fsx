@@ -208,16 +208,27 @@ let snowing =
                 nextWorld
             else
                 worldState.value
-        for r in 0..23 do
-            for c in 0..23 do
-                let color =
-                    match world[(r * 24) + c] with
-                    | Snowflake.Empty -> empty
-                    | Snowflake.Falling -> snowflake
-                    | Snowflake.Lying ->
-                        let height = getSnowHeight world c r
-                        getSnowColor height
-                pxl.xy(c,r).stroke(color).noAntiAlias()
+
+        world |> Array.mapi (fun i cell ->
+            match cell with
+            | Snowflake.Empty -> empty
+            | Snowflake.Falling -> snowflake
+            | Snowflake.Lying ->
+                let height = getSnowHeight world (i % 24) (i / 24)
+                getSnowColor height
+        )
+        |> pxls.set
+
+        // for r in 0..23 do
+        //     for c in 0..23 do
+        //         let color =
+        //             match world[(r * 24) + c] with
+        //             | Snowflake.Empty -> empty
+        //             | Snowflake.Falling -> snowflake
+        //             | Snowflake.Lying ->
+        //                 let height = getSnowHeight world c r
+        //                 getSnowColor height
+        //         pxl.xy(c,r).stroke(color).noAntiAlias()
     }
 
 [<AppV1(name = "UrsEnzler_LetItSnow")>]
