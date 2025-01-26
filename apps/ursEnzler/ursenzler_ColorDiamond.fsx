@@ -165,9 +165,7 @@ let all =
         time ctx.now.Hour ctx.now.Minute
     }
 
-#if INTERACTIVE
 all |> Simulator.start "localhost"
-#endif
 
 (*
 Simulator.stop ()

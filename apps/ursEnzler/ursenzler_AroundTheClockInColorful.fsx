@@ -130,9 +130,7 @@ let all =
         hours ctx.now.Hour
     }
 
-#if INTERACTIVE
 all |> Simulator.start "localhost"
-#endif
 
 (*
 Simulator.stop ()

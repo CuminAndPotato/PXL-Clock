@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.1-preview.4"
+﻿#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
@@ -9,8 +9,6 @@ open Pxl.Ui
     Every second, the hue value of the second hand is increased by one.
     During every minute the visualized seconds are dimmed.
 *)
-
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
 
 [<Measure>]
 type Degrees
@@ -267,9 +265,7 @@ let all =
         time ctx.now.Hour ctx.now.Minute
     }
 
-#if INTERACTIVE
-all |> Simulator.start createCanvas
-#endif
+all |> Simulator.start "localhost"
 
 (*
 Simulator.stop ()

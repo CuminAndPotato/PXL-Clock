@@ -243,9 +243,7 @@ let all =
     }
 
 
-#if INTERACTIVE
 all |> Simulator.start "localhost"
-#endif
 
 (*
 Simulator.stop ()

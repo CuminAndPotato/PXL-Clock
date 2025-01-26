@@ -222,9 +222,7 @@ let all =
         time ctx.now
     }
 
-#if INTERACTIVE
 all |> Simulator.start "localhost"
-#endif
 
 (*
 Simulator.stop ()
