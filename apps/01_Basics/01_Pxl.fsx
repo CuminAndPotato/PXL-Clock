@@ -1,13 +1,8 @@
-#r "nuget: Pxl, 0.0.1-preview.4"
+#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
 open Pxl.Ui
-
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
-
-
-// -------------------------------------------------------------
 
 
 
@@ -25,7 +20,7 @@ scene {
     pxl.xy(0, ctx.height - 1.0).stroke(Colors.green)
     pxl.xy(ctx.width - 1.0, ctx.height - 1.0).stroke(Colors.yellow)
 }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 
 (*

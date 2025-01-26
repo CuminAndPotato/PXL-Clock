@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.1-preview.4"
+﻿#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
@@ -10,7 +10,7 @@ open Pxl.Ui
     During every minute the visualized seconds are dimmed.
 *)
 
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
+
 
 /// Converts HSV to RGB.
 /// h: Hue in degrees (0-360)
@@ -233,7 +233,7 @@ let all =
     }
 
 #if INTERACTIVE
-all |> Simulator.start createCanvas
+all |> Simulator.start "localhost"
 #endif
 
 (*

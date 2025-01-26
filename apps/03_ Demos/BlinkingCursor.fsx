@@ -1,12 +1,8 @@
-#r "nuget: Pxl, 0.0.1-preview.4"
+#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
 open Pxl.Ui
-
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
-
-// -------------------------------------------------------------
 
 
 let blinkingCursor =
@@ -22,5 +18,5 @@ let blinkingCursor =
         text.var4x5("_", 0, 0).color(color)
     }
 
-blinkingCursor |> Simulator.start createCanvas
+blinkingCursor |> Simulator.start "localhost"
 

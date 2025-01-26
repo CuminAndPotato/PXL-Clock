@@ -1,12 +1,9 @@
-#r "nuget: Pxl, 0.0.1-preview.4"
+#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
 open Pxl.Ui
 
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
-
-// -------------------------------------------------------------
 
 
 (*
@@ -18,32 +15,32 @@ let createCanvas = CanvasProxy.createWithDefaults "localhost"
 
 
 scene { text.var3x5("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.mono3x5("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.var4x5("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.mono4x5("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.mono6x6("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.mono7x10("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.var10x10("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.mono10x10("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 scene { text.mono16x16("abk").xy(0, 0).color(Colors.gray) }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 // let f = Fonts.mono10x10
 let f = Fonts.getBuiltinTypeface "10x10-monospaced-font.ttf" |> Fonts.buildFont 16 (Some -6)
-scene { text("ABK").xy(0, 0).color(Colors.gray).font(f) } |> Simulator.start createCanvas
+scene { text("ABK").xy(0, 0).color(Colors.gray).font(f) } |> Simulator.start "localhost"

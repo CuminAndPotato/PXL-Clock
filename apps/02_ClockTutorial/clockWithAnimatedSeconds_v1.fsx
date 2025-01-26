@@ -1,14 +1,8 @@
-#r "nuget: Pxl, 0.0.1-preview.4"
+#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
 open Pxl.Ui
-
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
-
-
-// -------------------------------------------------------------
-
 
 
 
@@ -90,7 +84,7 @@ scene {
 
     animateTextChange($"{displayValue.value}", 0, 0, Colors.white)
 }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 
 
@@ -115,7 +109,7 @@ scene {
 
     animateTextChange(second, 0, row 2, color)
 }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 
 

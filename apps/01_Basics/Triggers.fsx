@@ -1,13 +1,9 @@
-#r "nuget: Pxl, 0.0.1-preview.4"
+#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
 open Pxl.Ui
 
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
-
-
-// -------------------------------------------------------------
 
 
 // idea: when the second value of "now" changes (only 1 frame for every second)
@@ -23,7 +19,7 @@ scene {
 
     text.mono6x6($"{count.value}").color(Colors.white)
 }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 
 

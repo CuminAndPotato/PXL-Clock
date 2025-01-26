@@ -1,12 +1,8 @@
-#r "nuget: Pxl, 0.0.1-preview.4"
+#r "nuget: Pxl, 0.0.1-preview.5"
 
 open System
 open Pxl
 open Pxl.Ui
-
-let createCanvas = CanvasProxy.createWithDefaults "localhost"
-
-// -------------------------------------------------------------
 
 
 
@@ -36,7 +32,7 @@ scene {
     // ...this rect is NOT rotated
     rectCenter(6, Colors.blue)
 }
-|> Simulator.start createCanvas
+|> Simulator.start "localhost"
 
 
 // // access merged yielded "combine" and copy the 0,0 pixel to the right
