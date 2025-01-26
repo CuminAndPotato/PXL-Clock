@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.1-preview.5"
+﻿#r "nuget: Pxl, 0.0.1-preview.4"
 
 open System
 open Pxl
@@ -10,7 +10,24 @@ open Pxl.Ui
     During every minute the visualized seconds are dimmed.
 *)
 
+let createCanvas = CanvasProxy.createWithDefaults "localhost"
 
+[<Measure>]
+type Degrees
+type ColourSeeds = { Previous: float<Degrees>; Current: float<Degrees>; Next: float<Degrees> }
+
+module Degrees =
+    let getSmallerAngelAndDirection (a: float<Degrees>) (b: float<Degrees>) =
+        let a = a % 360.0<Degrees>
+        let b = b % 360.0<Degrees>
+        let diff = abs (b - a)
+        if diff > 180.0<Degrees> then
+            let diff = 360.0<Degrees> - diff
+            if abs((a + diff) % 360.0<Degrees> - b) < abs((b + diff) % 360.0<Degrees> - a) then diff, 1
+            else diff, -1
+        else
+            if abs((a + diff) % 360.0<Degrees> - b) < abs((b + diff) % 360.0<Degrees> - a) then diff, 1
+            else diff, -1
 
 /// Converts HSV to RGB.
 /// h: Hue in degrees (0-360)
@@ -47,21 +64,33 @@ let time hour minute =
 let backgroundColor = hsva 195.0 0.9 0.2 0.4
 
 let seconds minute second =
-    let getColor (s: int) step =
-        if (s <= second) then
-            hsva
-                (float ((minute * 60) + s))
-                (1.0 - ((float step) * 0.15))
-                (1.0 - float (second - s) / 100.0 - step * 0.05)
-                1
-        else
-            hsva
-                (float ((((minute - 1) % 60) * 60) + s + 1))
-                (1.0 - ((float step) * 0.15))
-                (1.0 - float ((second - s + 60) % 60) / 100.0 - step * 0.05)
-                1
+    let calcColoredPixels colorSeeds =
+        let previousAngel, previousDirection = Degrees.getSmallerAngelAndDirection colorSeeds.Previous colorSeeds.Current
+        let currentAngel, currentDirection = Degrees.getSmallerAngelAndDirection colorSeeds.Current colorSeeds.Next
+        let previousAngelPerStep = previousAngel / 60.0
+        let currentAngelPerStep = currentAngel / 60.0
 
-    let calcColoredPixels () =
+        let getValue delta =
+            max (1.0 - ((Math.Pow(2.0, Math.Pow(delta, 1.15) / 20.0) - 1.0) / 80.0)) 0.0
+
+        let getColor (s: int) step =
+            if (s <= second) then
+                let value = (float (colorSeeds.Current + currentAngelPerStep * float s * float currentDirection))
+                hsva
+                    (if value > 0 then value else 360.0 + value)
+                    (1.0 - ((float step) * 0.15))
+                    //(getValue (float (second - s)))
+                    (1.0 - float (second - s) / 100.0 - step * 0.05)
+                    1
+            else
+                let value = (float (colorSeeds.Previous + previousAngelPerStep * float s * float previousDirection))
+                hsva
+                    (if value > 0 then value else 360.0 + value)
+                    (1.0 - ((float step) * 0.15))
+                    //(getValue (float (second - s + 60)))
+                    (1.0 - float ((second - s + 60) % 60) / 100.0 - step * 0.05)
+                    1
+
         let pixels = Array.init 576 (fun _ -> backgroundColor)
 
         let set x y color =
@@ -214,16 +243,22 @@ let seconds minute second =
         pixels
 
     scene {
-        let! coloredPixels = useState { calcColoredPixels () }
+        let! colourSeeds = useState { { Previous = Random.Shared.NextDouble() * 360.0<Degrees>; Current = Random.Shared.NextDouble() * 360.0<Degrees>; Next = Random.Shared.NextDouble() * 360.0<Degrees> } }
+        let! coloredPixels = useState { calcColoredPixels colourSeeds.value }
 
-        let! trigger = Trigger.valueChanged(second)
-        if trigger then
-            coloredPixels.value <- calcColoredPixels ()
+        let! colorSeedTrigger = Trigger.valueChanged(minute)
+        let! frameTrigger = Trigger.valueChanged(second)
+
+        if colorSeedTrigger then
+            colourSeeds.value <- { Previous = colourSeeds.value.Current; Current = colourSeeds.value.Next; Next = Random.Shared.NextDouble() * 360.0<Degrees> }
+
+        if frameTrigger then
+            coloredPixels.value <- calcColoredPixels colourSeeds.value
 
         pxls.set(coloredPixels.value)
     }
 
-[<AppV1(name = "Urs Enzler - Colour Wheel Dynamic")>]
+[<AppV1(name = "Urs Enzler - Colour Wheel Random")>]
 let all =
     scene {
         bg.color(hsva 195.0 0.9 0.2 0.4)
@@ -233,7 +268,7 @@ let all =
     }
 
 #if INTERACTIVE
-all |> Simulator.start "localhost"
+all |> Simulator.start createCanvas
 #endif
 
 (*
