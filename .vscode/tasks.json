@@ -17,7 +17,7 @@
       }
     },
     {
-      "label": "Deploy Image to Device",
+      "label": "Deploy Image (gif, png, etc.) to Device",
       "type": "shell",
       "command": "./deploy-image.sh",
       "group": {

@@ -1,4 +1,3 @@
-cd ./.deps/pxl-simulator
-npm i
-npm run build
-npm run dev
+echo "Downloading simulator ..."
+dotnet tool restore
+dotnet pxl

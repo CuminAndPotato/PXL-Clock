@@ -83,7 +83,6 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 [![NuGet](https://img.shields.io/nuget/v/Pxl.svg?style=flat-square&logo=nuget)](https://www.nuget.org/packages/Pxl)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Pxl.svg?style=flat-square)](https://www.nuget.org/packages/Pxl)
 
-
 Whether you’re a seasoned developer or new to programming, we hope these resources will jumpstart your creativity.
 
 You can use this repository as a reference point for developing your own custom PXL-Clock applications. We provide examples, documentation, and tools to help you get started:
@@ -92,13 +91,7 @@ To programm PXL-Apps, you need to set up your development environment. Here’s 
 
 ### Prerequisites
 
-**Frameworks**
-
 - [**.NET 8 SDK**](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- [**Node / npm** - current LTS](https://nodejs.org)
-
-**Tools**
-
 - [**Visual Studio Code (VSCode)**](https://code.visualstudio.com/)
 - [**Ionide-fsharp Extension for VSCode**](https://marketplace.visualstudio.com/items?itemName=Ionide.Ionide-fsharp)
 
@@ -126,6 +119,10 @@ Before running any apps, you’ll need to start the simulator.
 2. Select **Start Simulator** from the list.
 
 As an alternative for the VSCode build task, just run `./start-simulator.sh` (Mac) or `./start-simulator.ps1` (Windows) in your terminal.
+
+**Open the Simulator View in Your Browser:**
+
+Open your browser and navigate to `http://localhost:5001`
 
 ### Run an App
 
