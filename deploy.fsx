@@ -191,7 +191,7 @@ let workflow =
     match args with
     | [ _ ] -> None
     | [ _; workflow ] -> Some workflow
-    | _ -> failwith "Invalid arguments. Usage: dotnet fsi build/deploy.fsx -- [image|app]"
+    | _ -> failwith "Invalid arguments. Usage: dotnet fsi deploy.fsx -- [image|app]"
 
 match workflow with
 | Some "image" -> Workflows.deployImage ()

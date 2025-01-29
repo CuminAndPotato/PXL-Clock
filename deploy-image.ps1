@@ -1,1 +1,1 @@
-dotnet fsi build/deploy.fsx -- image
+dotnet fsi deploy.fsx -- image

@@ -1,1 +1,1 @@
-dotnet fsi build/deploy.fsx -- app
+dotnet fsi deploy.fsx -- app
