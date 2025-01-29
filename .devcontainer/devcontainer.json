@@ -1,0 +1,10 @@
+{
+  "name": "PXL-Clock Dev Container",
+  "image": "mcr.microsoft.com/vscode/devcontainers/dotnet:8.0",
+  "customizations": {
+    "vscode": {
+      "extensions": ["Ionide.Ionide-fsharp"]
+    }
+  },
+  "postCreateCommand": "dotnet tool restore"
+}
