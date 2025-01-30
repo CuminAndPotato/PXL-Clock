@@ -106,7 +106,7 @@ A PXL-App consists of two parts:
 - one or more F# script (or many of them) that contain the code for your app,
 - optionally some assets like images.
 
-To set up your first app, simply create a new F# script file in the `./apps` directory. You can use the existing apps as a starting point to learn more about the structure of a PXL-App.
+To set up your first app, simply create a new F# script file in the `./apps_fsharp` directory. You can use the existing apps as a starting point to learn more about the structure of a PXL-App.
 
 ### 🚀 Start the Simulator
 
@@ -142,7 +142,7 @@ Follow-up PRs (updates) for your app in case you want to improve it are welcome!
 
 ### The PizzaMampf Sprite
 
-Check out the sprite 🖼️ `./apps/03_ Demos/assets/pizzaMampf.png`) and swap them with your own custom artwork to personalize your app.
+Check out the sprite 🖼️ `./apps_fsharp/03_ Demos/assets/pizzaMampf.png`) and swap them with your own custom artwork to personalize your app.
 
 ### Deploying an App or an Image to the PXL-Clock
 

@@ -2,6 +2,9 @@
 #r "nuget: Spectre.Console, 0.48.1-preview.0.20"
 #r "nuget: Spectre.Console.Cli, 0.48.1-preview.0.20"
 
+let appsFSharpFolderName = "apps_fsharp"
+let appsFSharpDir = __SOURCE_DIRECTORY__ + $"/../{appsFSharpFolderName}"
+
 [<RequireQualifiedAccess>]
 module Console =
     open Spectre.Console
@@ -108,11 +111,10 @@ module Steps =
 
     let chooseFsxFile () =
         let fsxFiles = 
-            let appDir = __SOURCE_DIRECTORY__ + "/../apps"
-            Directory.GetFiles(appDir, "*.fsx", SearchOption.AllDirectories)
+            Directory.GetFiles(appsFSharpDir, "*.fsx", SearchOption.AllDirectories)
             |> Array.toList
             |> List.map (fun fileName -> 
-                let displayName = fileName.Substring(appDir.Length + 1)
+                let displayName = fileName.Substring(appsFSharpDir.Length + 1)
                 displayName, fileName)
         Console.selectOne "Choose the app to deploy" fsxFiles
 
@@ -129,19 +131,18 @@ module Steps =
 
     let chooseSingleImageInRepo () =
         let imageFiles = 
-            let appDir = __SOURCE_DIRECTORY__ + "/../apps"
             [ 
                 "*.png"
                 "*.gif"
                 "*.jpg"
             ]
             |> List.map (fun ext -> 
-                Directory.GetFiles(appDir, ext, SearchOption.AllDirectories)
+                Directory.GetFiles(appsFSharpDir, ext, SearchOption.AllDirectories)
                 |> Array.toList
             )
             |> List.concat
             |> List.map (fun fileName -> 
-                let displayName = fileName.Substring(appDir.Length + 1)
+                let displayName = fileName.Substring(appsFSharpDir.Length + 1)
                 displayName, fileName)
         Console.selectOne "Choose the image to display" imageFiles
 
@@ -209,8 +210,8 @@ match workflow with
 // let fsiTest () =
 //     deployApp 
 //         "192.168.178.52" 
-//         (__SOURCE_DIRECTORY__ + "/../apps/ursEnzler/ursenzler_Mythen.fsx")
+//         (__SOURCE_DIRECTORY__ + "/../apps_fsharp/ursEnzler/ursenzler_Mythen.fsx")
 //         [
-//             __SOURCE_DIRECTORY__ + "/../apps/ursEnzler/assets/ursenzler_Mythen.png"
+//             __SOURCE_DIRECTORY__ + "/../apps_fsharp/ursEnzler/assets/ursenzler_Mythen.png"
 //         ]
 // fsiTest ()
