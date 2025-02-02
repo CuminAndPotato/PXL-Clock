@@ -83,7 +83,7 @@ let mythen =
     let img = Image.loadFromAsset(__SOURCE_DIRECTORY__, "ursenzler_Mythen.png")
     image(img, 0, 0)
 
-[<AppV1(name = "UrsEnzler_Mythen")>]
+[<AppV1(name = "Urs Enzler - Mythen")>]
 let all =
     scene {
         let! ctx = getCtx ()

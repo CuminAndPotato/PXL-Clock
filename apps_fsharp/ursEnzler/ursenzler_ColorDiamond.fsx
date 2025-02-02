@@ -156,7 +156,7 @@ let hand second =
                 .useAntiAlias()
     }
 
-[<AppV1(name = "UrsEnzler_ColorDiamond")>]
+[<AppV1(name = "Urs Enzler - Color Diamond")>]
 let all =
     scene {
         let! ctx = getCtx ()

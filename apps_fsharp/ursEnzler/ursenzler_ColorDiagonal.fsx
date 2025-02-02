@@ -93,7 +93,7 @@ let diffuser =
         rect.xywh(0, 08, 24, 7).fill(Color.argb(80, 0, 0, 0)).useAntiAlias()
     }
 
-[<AppV1(name = "UrsEnzler_ColorDiagonal")>]
+[<AppV1(name = "Urs Enzler - Color Diagonal")>]
 let all =
     scene {
         let! ctx = getCtx ()

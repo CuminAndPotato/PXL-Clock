@@ -214,7 +214,7 @@ let life =
         world |> Array.map (fun cell -> if cell then alive else empty) |> pxls.set
     }
 
-[<AppV1(name = "UrsEnzler_GameOfLife")>]
+[<AppV1(name = "Urs Enzler - Game Of Life")>]
 let all =
     scene {
         let! ctx = getCtx ()

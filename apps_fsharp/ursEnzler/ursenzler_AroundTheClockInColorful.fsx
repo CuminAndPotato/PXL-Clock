@@ -120,7 +120,7 @@ let hours hour =
             pxl.xy(7, 30 - s).stroke(getColor s)
     }
 
-[<AppV1(name = "UrsEnzler_AroundTheClockColorful")>]
+[<AppV1(name = "Urs Enzler - Around The Clock Colorful")>]
 let all =
     scene {
         let! ctx = getCtx ()

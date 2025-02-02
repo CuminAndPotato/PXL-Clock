@@ -234,7 +234,7 @@ let snowing =
         |> pxls.set
     }
 
-[<AppV1(name = "Urs Enzler - Let it snow")>]
+[<AppV1(name = "Urs Enzler - Let It Snow")>]
 let all =
     scene {
         let! ctx = getCtx ()

@@ -91,7 +91,7 @@ let dog (minute: int) (second: int) =
         // pxl.xy(second % 24, 1).stroke(Colors.blue)
 
         let calcColoredPixels () =
-            let current = 
+            let current =
                 shift (second % 2) second
             let pixels =
                 [
@@ -119,7 +119,7 @@ let dog (minute: int) (second: int) =
                 ]
             coloredPixels |> List.toArray
 
-        // remember the colored pixels (initially) and be updated when second changes (below)        
+        // remember the colored pixels (initially) and be updated when second changes (below)
         let! coloredPixels = useState { calcColoredPixels () }
 
         // only calculate colored pixels when second changes
@@ -146,7 +146,7 @@ let diffuser =
             .useAntiAlias ()
     }
 
-[<AppV1(name = "UrsEnzler_NicosDog")>]
+[<AppV1(name = "Urs Enzler - Nicos Dog")>]
 let all =
     scene {
         let! ctx = getCtx ()

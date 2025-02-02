@@ -59,7 +59,7 @@ let rain step =
                 .noAntiAlias()
     }
 
-[<AppV1(name = "UrsEnzler_ColourRain")>]
+[<AppV1(name = "Urs Enzler - Colour Rain")>]
 let all =
     scene {
         let! ctx = getCtx ()

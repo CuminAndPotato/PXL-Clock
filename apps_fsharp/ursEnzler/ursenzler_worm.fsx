@@ -147,7 +147,7 @@ let diffuser =
             .useAntiAlias ()
     }
 
-[<AppV1(name = "UrsEnzler_Worm")>]
+[<AppV1(name = "Urs Enzler - Worm")>]
 let all =
     scene {
         let! ctx = getCtx ()
