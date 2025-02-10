@@ -103,11 +103,7 @@ module Steps =
         |> ignore
 
     let askForDeviceAddress () =
-        let addr = Console.askForValue "Enter the IP address or FQDN of the PxlClock device"
-        // if addr.Contains(":")
-        // then $"{addr}/daemon"
-        // else addr
-        $"{addr}:5003"
+        Console.askForValue "Enter the IP address or FQDN (port optional) of the PxlClock device"
 
     let chooseFsxFile () =
         let fsxFiles = 
