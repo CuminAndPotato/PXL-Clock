@@ -3,7 +3,7 @@
 #r "nuget: Spectre.Console.Cli, 0.48.1-preview.0.20"
 
 let appsFSharpFolderName = "apps_fsharp"
-let appsFSharpDir = __SOURCE_DIRECTORY__ + $"/../{appsFSharpFolderName}"
+let appsFSharpDir = __SOURCE_DIRECTORY__ + $"/{appsFSharpFolderName}"
 
 [<RequireQualifiedAccess>]
 module Console =
