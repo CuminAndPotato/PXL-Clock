@@ -68,31 +68,26 @@ let seconds minute second =
         let previousAngelPerStep = previousAngel / 60.0
         let currentAngelPerStep = currentAngel / 60.0
 
-        let getValue delta =
-            max (1.0 - ((Math.Pow(2.0, Math.Pow(delta, 1.15) / 20.0) - 1.0) / 80.0)) 0.0
-
         let getColor (s: int) step =
             if (s <= second) then
                 let value = (float (colorSeeds.Current + currentAngelPerStep * float s * float currentDirection))
                 hsva
                     (if value > 0 then value else 360.0 + value)
                     (1.0 - ((float step) * 0.15))
-                    //(getValue (float (second - s)))
-                    (1.0 - float (second - s) / 100.0 - step * 0.05)
+                    (1.0 - float (second - s) / 115.0 - step * 0.05)
                     1
             else
                 let value = (float (colorSeeds.Previous + previousAngelPerStep * float s * float previousDirection))
                 hsva
                     (if value > 0 then value else 360.0 + value)
                     (1.0 - ((float step) * 0.15))
-                    //(getValue (float (second - s + 60)))
-                    (1.0 - float ((second - s + 60) % 60) / 100.0 - step * 0.05)
+                    (1.0 - float ((second - s + 60) % 60) / 115.0 - step * 0.05)
                     1
 
         let pixels = Array.init 576 (fun _ -> backgroundColor)
 
         let set x y color =
-            pixels.[x + y * 24] <- color
+            pixels[x + y * 24] <- color
 
         for s in 0..6 do
             set (12 + s) 4 (getColor s 0)
