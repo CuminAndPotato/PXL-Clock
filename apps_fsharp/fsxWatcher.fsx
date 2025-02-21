@@ -6,33 +6,39 @@ open FSharp.Compiler.Interactive.Shell
 
 let watchPath = __SOURCE_DIRECTORY__
 
-let fsiSession, outStream = 
+let fsiSession, inStream, outStream = 
     let argv = [| "fsi.exe"; "--noninteractive" |]
     let inStream = new StringReader("")
     let outStream = new StringWriter()
     let errStream = new StringWriter()
     let fsiConfig = FsiEvaluationSession.GetDefaultConfiguration()
     let session = FsiEvaluationSession.Create(fsiConfig, argv, inStream, outStream, errStream)
-    session, outStream
+    session, inStream, outStream
 
 let onChanged (e: FileSystemEventArgs) =
+    let red = "\u001b[31m"
+    let reset = "\u001b[0m"
+
     async {
         if e.FullPath = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__) then () else
 
-        let red = "\u001b[31m"
-        let reset = "\u001b[0m"
-
-        try
-            printfn $"Processing event {e.ChangeType} for file {e.FullPath}..."
-            let res,diag = 
-                File.ReadAllText(e.FullPath)
-                |> fsiSession.EvalInteractionNonThrowing
+        let eval command =
+            let res,diag =  command |> fsiSession.EvalInteractionNonThrowing
             match res with
             | Choice1Of2 _ -> ()
             | Choice2Of2 ex ->
-                printfn $"{red}Error"
+                printfn $"{red}Error: {ex.Message}{reset}"
                 for diag in diag do
                     printfn $"{red}  {e.FullPath}:{diag.StartLine}:{diag.StartColumn} :: {diag.Message}{reset}"
+
+        try
+            printfn $"Processing event {e.ChangeType} for file {e.FullPath}..."
+            let sourceDir = Path.GetDirectoryName(e.FullPath)
+            
+            printfn $"""cd "{sourceDir}" """
+            $"""System.Environment.CurrentDirectory <- "{sourceDir}" """ |> eval
+            
+            File.ReadAllText(e.FullPath) |> eval
 
             printfn "%s" (outStream.ToString())
             outStream.GetStringBuilder().Clear() |> ignore
