@@ -14,7 +14,7 @@ AND / OR OPEN THE FILE ./PxlApps/1%20-%20Basics/01_Sprites.fsx
 *)
 
 let pizzaSpriteMap =
-    Image.loadFromAsset(__SOURCE_DIRECTORY__, "pizzaMampf.png")
+    Image.loadFromAsset(Environment.CurrentDirectory, "pizzaMampf.png")
         .crop(456, 0, 0, 0)
         .makeSpriteMap(16, 16, 50)
 

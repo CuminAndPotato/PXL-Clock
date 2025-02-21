@@ -49,7 +49,7 @@ let sceneSwitcher (scene1: Vide<_,_>) (scene2: Vide<_,_>) duration =
 
 
 let pushWpsButton =
-    let img = Image.loadFromAsset(__SOURCE_DIRECTORY__, "buttons_set_main_colRed_other.png")
+    let img = Image.loadFromAsset(Environment.CurrentDirectory, "buttons_set_main_colRed_other.png")
     let imgReleased = img.cropLRWH(36, 1, 20, 17)
     let imgPressed = img.cropLRWH(59, 1, 20, 17)
 
