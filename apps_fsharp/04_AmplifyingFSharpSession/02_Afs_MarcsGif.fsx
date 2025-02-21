@@ -6,7 +6,7 @@ open Pxl.Ui
 
 
 let marcDuikersGif =
-    Asset.load(Environment.CurrentDirectory, "MarcDuiker_Outrun.gif")
+    Asset.load(__SOURCE_DIRECTORY__, "MarcDuiker_Outrun.gif")
     |> Image.loadFrames
 
 

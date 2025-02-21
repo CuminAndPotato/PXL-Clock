@@ -11,9 +11,12 @@ open Pxl.Ui
 // also works in a nested way.
 scene {
     bg(Colors.darkBlue)
-    for x in 0..4 do
-        for y in 0..4 do
-            rect.xywh(x*4, y*4, 1, 1).fill(Colors.blue)
+
+    for x in 0.0 .. 4.0 do
+        for y in 0.0 .. 4.0 do
+            // we can even have state inside loops
+            let! dx = Anim.linear(1.0, 0.0, 10.0, repeat = Repeat.Loop)
+            pxl.xy(x * 4.0 + dx.value, y * 4.0).stroke(Colors.blue)
 }
 |> Simulator.start "localhost"
 

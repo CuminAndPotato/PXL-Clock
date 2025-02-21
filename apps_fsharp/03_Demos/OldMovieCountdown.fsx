@@ -40,7 +40,7 @@ let countdown (duration: int) =
 
 // The component for the plant rising animation.
 let plantRising =
-    let plantImg = Image.loadFromAsset(Environment.CurrentDirectory, "plant.png")
+    let plantImg = Image.loadFromAsset(__SOURCE_DIRECTORY__, "plant.png")
     scene {
         let! y = Anim.easeInOutSine(4, 24, 0, Repeat.StopAtEnd)
         image(plantImg, 0, y.value)

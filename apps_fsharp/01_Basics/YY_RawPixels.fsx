@@ -14,7 +14,6 @@ let finalScene =
         text.var4x5("abc").color(Colors.white)
 
         let! pixels = pxls.get()
-        pixels.GetHashCode() |> printfn "pixels: %A"
 
         // from white to dark blue
         for i in 0..pixels.Length - 1 do

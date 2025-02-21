@@ -90,7 +90,7 @@ let lines hour  =
     }
 
 let mythen =
-    let img = Image.loadFromAsset(Environment.CurrentDirectory, "ursenzler_Mythen.png")
+    let img = Image.loadFromAsset(__SOURCE_DIRECTORY__, "ursenzler_Mythen.png")
     image(img, 0, 0)
 
 [<AppV1(name = "Urs Enzler - Mythen")>]

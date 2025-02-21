@@ -14,8 +14,8 @@ scene {
         rect.xywh(
             margin,
             margin,
-            ctx.width - 2 * margin,
-            ctx.height - 2 * margin)
+            ctx.width - 2.0 * margin,
+            ctx.height - 2.0 * margin)
             .fill(color)
 
     // draw a red rect - this is not rorated
