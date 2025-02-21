@@ -17,6 +17,18 @@
       }
     },
     {
+      "label": "Start F# Watcher",
+      "type": "shell",
+      "command": "./start-fsharp-watcher.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "windows": {
+        "command": "./start-fsharp-watcher.ps1"
+      }
+    },
+    {
       "label": "Deploy Image (gif, png, etc.) to Device",
       "type": "shell",
       "command": "./deploy-image.sh",
