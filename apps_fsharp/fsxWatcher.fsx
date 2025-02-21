@@ -6,14 +6,14 @@ open FSharp.Compiler.Interactive.Shell
 
 let watchPath = __SOURCE_DIRECTORY__
 
-let fsiSession, inStream, outStream = 
+let fsiSession, outStream, errStream = 
     let argv = [| "fsi.exe"; "--noninteractive" |]
     let inStream = new StringReader("")
     let outStream = new StringWriter()
     let errStream = new StringWriter()
     let fsiConfig = FsiEvaluationSession.GetDefaultConfiguration()
     let session = FsiEvaluationSession.Create(fsiConfig, argv, inStream, outStream, errStream)
-    session, inStream, outStream
+    session, outStream, errStream
 
 let onChanged (e: FileSystemEventArgs) =
     let red = "\u001b[31m"
@@ -33,14 +33,21 @@ let onChanged (e: FileSystemEventArgs) =
 
         try
             printfn $"Processing event {e.ChangeType} for file {e.FullPath}..."
+
             let sourceDir = Path.GetDirectoryName(e.FullPath)
+            let sourceFile = e.FullPath
             
-            printfn $"""cd "{sourceDir}" """
-            $"""System.Environment.CurrentDirectory <- "{sourceDir}" """ |> eval
-            
-            File.ReadAllText(e.FullPath) |> eval
+            [
+                $"""# silentCd @"{sourceDir}" """
+                $"""# 1 @"{sourceFile}" """
+                File.ReadAllText(e.FullPath)
+            ]
+            |> String.concat "\n"
+            |> eval
 
             printfn "%s" (outStream.ToString())
+            printfn "%s" (errStream.ToString())
+
             outStream.GetStringBuilder().Clear() |> ignore
         with ex ->
             printfn $"{red}Error processing file {e.FullPath}: {ex.Message}{reset}"
@@ -61,3 +68,4 @@ printfn $"Watching {watchPath} for changes (press Enter to exit)..."
 Console.ReadLine() |> ignore
 
 watcher.Dispose()
+
