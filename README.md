@@ -110,29 +110,12 @@ To set up your first app, simply create a new F# script file in the `./apps_fsha
 
 ### 🚀 Start the Simulator
 
-Before running any apps, you’ll need to start the simulator.
+TL;DR: 
 
-**Important:** ⚠️ Only one simulator should be running at a time.
-
-1. Open the list of build tasks in VSCode:
-   - Press `Ctrl+Shift+B` (Windows/Linux) or `Cmd+Shift+B` (macOS).
-2. Select **Start Simulator** from the list.
-
-As an alternative for the VSCode build task, just run `./start-simulator.sh` (Mac) or `./start-simulator.ps1` (Windows) in your terminal.
-
-**Open the Simulator View in Your Browser:**
-
-Open your browser and navigate to `http://localhost:5001`
-
-### Run an App
-
-- Ensure the simulator is running (see above).
-- Open your app file in the editor (works as well with all samples and tutorials here in this repo).
-- Select the entire content of the file and run it by pressing `Alt+Enter` (Windows) or `Cmd+Enter` (Mac).
-
-You can modify the code, open new files, and re-run apps as often as you like. Simply re-evaluate the **entire file** (that's the mose easy way.)
-
-In case the simulator does not what you expect (e.g. you were in sleep mode), just restart the simulator.
+- Open the VSCode build task (by pressing `Ctrl+Shift+B`) and select `Start All`. That will run the simulator and the FSI (F# Interactive) file watcher for you.
+- You then open the simulator in your browser (`http://localhost:5001`).
+- After that, simple create or modify and `.fsx` file in the `./apps_fsharp` directory.
+- The last file saved will be automatically run in the simulator.
 
 ### Submit Your App
 

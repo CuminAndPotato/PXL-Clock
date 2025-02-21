@@ -5,51 +5,63 @@
   },
   "tasks": [
     {
-      "label": "Start Simulator",
+      "label": "Start All (Simu + Watcher)",
       "type": "shell",
-      "command": "./start-simulator.sh",
+      "command": "./build/start-all.sh",
       "group": {
         "kind": "build",
         "isDefault": false
       },
       "windows": {
-        "command": "./start-simulator.ps1"
+        "command": "./build/start-all.ps1"
+      }
+    },
+    {
+      "label": "Start Simulator",
+      "type": "shell",
+      "command": "./build/start-simulator.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "windows": {
+        "command": "./build/start-simulator.ps1"
       }
     },
     {
       "label": "Start F# Watcher",
       "type": "shell",
-      "command": "./start-fsharp-watcher.sh",
+      "command": "./build/start-fsharp-watcher.sh",
       "group": {
         "kind": "build",
         "isDefault": false
       },
       "windows": {
-        "command": "./start-fsharp-watcher.ps1"
+        "command": "./build/start-fsharp-watcher.ps1"
       }
     },
     {
       "label": "Deploy Image (gif, png, etc.) to Device",
       "type": "shell",
-      "command": "./deploy-image.sh",
+      "command": "./build/deploy-image.sh",
       "group": {
         "kind": "build",
         "isDefault": false
       },
       "windows": {
-        "command": "./deploy-image.ps1"
+        "command": "./build/deploy-image.ps1"
       }
     },
     {
       "label": "Deploy App to Device",
       "type": "shell",
-      "command": "./deploy-app.sh",
+      "command": "./build/deploy-app.sh",
       "group": {
         "kind": "build",
         "isDefault": false
       },
       "windows": {
-        "command": "./deploy-app.ps1"
+        "command": "./build/deploy-app.ps1"
       }
     }
   ]
