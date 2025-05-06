@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.3"
+﻿#r "nuget: Pxl, 0.0.8"
 
 open System
 open Pxl
@@ -208,7 +208,7 @@ let seconds minute second =
         pixels
 
     scene {
-        let! coloredPixels = useState { calcColoredPixels () }
+        let! coloredPixels = useState (calcColoredPixels ())
 
         let! trigger = Trigger.valueChanged(second)
         if trigger then

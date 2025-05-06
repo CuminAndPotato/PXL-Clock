@@ -27,7 +27,7 @@ let countdown (duration: int) =
         mkArc().fill(Colors.red.opacity(0.5))
         mkArc().noAntiAlias().stroke(Color.mono 50).strokeThickness(1.0)
 
-        let! remainingSecs = useState { duration }
+        let! remainingSecs = useState duration
 
         text($"{remainingSecs.value}").xy(5, 4).color(Colors.black).fontSize(18)
 

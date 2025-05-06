@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.3"
+#r "nuget: Pxl, 0.0.8"
 
 open System
 open Pxl
@@ -10,7 +10,7 @@ open Pxl.Ui
 // A simple counter with a state variable
 scene {
     // Here, we declare a variable with initial value 0
-    let! count = useState { 0 }
+    let! count = useState 0
 
     text.mono6x6($"{count.value}").color(Colors.white)
 

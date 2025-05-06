@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.3"
+#r "nuget: Pxl, 0.0.8"
 
 open System
 open Pxl
@@ -25,7 +25,7 @@ let doIfPitfall =
     scene {
         let! ctx = getCtx ()
 
-        let! currSceneNo = useState { 0 }
+        let! currSceneNo = useState 0
         let! timeLeft = Anim.linear(10, 0, 1, repeat = Repeat.Loop, autoStart = true)
         let! swipeOffsetAnim = Anim.easeInOutCubic(
             0.7,

@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.3"
+#r "nuget: Pxl, 0.0.8"
 
 open System
 open Pxl
@@ -36,8 +36,8 @@ let animateTextChange (currText: string, x: int, y: int, color: Color, font) =
         Trigger.restartWhenValueChanges(
             currText,
             scene {
-                let! currText = useMemo { currText }
-                let! lastText = useMemo { lastText }
+                let! currText = useMemo currText
+                let! lastText = useMemo lastText
 
                 let! flyOutAnim = Anim.easeOutCubic(outDur, x, flyOutWidth, autoStart = true)
                 let! fadeOutAnim = Anim.easeOutCubic(outDur, color.opacity(), 0.0, autoStart = true)

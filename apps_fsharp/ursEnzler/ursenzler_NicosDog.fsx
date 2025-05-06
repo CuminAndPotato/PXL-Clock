@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.3"
+﻿#r "nuget: Pxl, 0.0.8"
 
 open System
 open Pxl
@@ -120,7 +120,7 @@ let dog (minute: int) (second: int) =
             coloredPixels |> List.toArray
 
         // remember the colored pixels (initially) and be updated when second changes (below)
-        let! coloredPixels = useState { calcColoredPixels () }
+        let! coloredPixels = useState (calcColoredPixels ())
 
         // only calculate colored pixels when second changes
         let! trigger = Trigger.valueChanged(second)

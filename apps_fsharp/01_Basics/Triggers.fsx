@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.3"
+#r "nuget: Pxl, 0.0.8"
 
 open System
 open Pxl
@@ -10,7 +10,7 @@ open Pxl.Ui
 // and that change is a multiple of 2, we increment the counter
 
 scene {
-    let! count = useState { 0 }
+    let! count = useState 0
     let! now = getNow()
 
     let! secChanged = Trigger.valueChanged now.Second
