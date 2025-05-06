@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.8"
+#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -23,11 +23,11 @@ let animateTextChange (currText: string, x: int, y: int, color: Color) =
         let flyOutWidth = 10
 
         // In order to detect changes, we need to keep the last text.
-        let! lastText = useState currText
+        let! lastText = useState { currText }
 
         // For a better understanding, we keep explicit states for the animations.
-        let! fadeInText = useState currText
-        let! flyOutText = useState currText
+        let! fadeInText = useState { currText }
+        let! flyOutText = useState { currText }
 
         // We know that we need (according to our spec above)
         // 3 animations: one for the flyout+fadeout, and one for the fade in.
@@ -74,8 +74,8 @@ let animateTextChange (currText: string, x: int, y: int, color: Color) =
 // !!!!! Make sure that all the code above is evaluated,
 // select this block here and evaluate it.
 scene {
-    let! count = useState 0
-    let! displayValue = useState count.value
+    let! count = useState { 0 }
+    let! displayValue = useState { count.value }
 
     if count.value % 80 = 0 then
         displayValue.value <- count.value

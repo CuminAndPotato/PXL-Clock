@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.8"
+﻿#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -76,7 +76,7 @@ let getRandomStart width height (now: DateTimeOffset) =
 let worm width height =
     scene {
         let! now = getNow ()
-        let! data = useState (getRandomStart width height now)
+        let! data = useState { getRandomStart width height now }
 
         let! secChanged = Trigger.valueChanged (now.Millisecond / 100)
         let! minChanged = Trigger.valueChanged now.Minute

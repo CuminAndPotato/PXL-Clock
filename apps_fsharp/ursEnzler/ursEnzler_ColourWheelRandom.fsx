@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.8"
+﻿#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -236,8 +236,8 @@ let seconds minute second =
         pixels
 
     scene {
-        let! colourSeeds = useState { Previous = Random.Shared.NextDouble() * 360.0<Degrees>; Current = Random.Shared.NextDouble() * 360.0<Degrees>; Next = Random.Shared.NextDouble() * 360.0<Degrees> }
-        let! coloredPixels = useState calcColoredPixels colourSeeds.value
+        let! colourSeeds = useState { { Previous = Random.Shared.NextDouble() * 360.0<Degrees>; Current = Random.Shared.NextDouble() * 360.0<Degrees>; Next = Random.Shared.NextDouble() * 360.0<Degrees> } }
+        let! coloredPixels = useState { calcColoredPixels colourSeeds.value }
 
         let! colorSeedTrigger = Trigger.valueChanged(minute)
         let! frameTrigger = Trigger.valueChanged(second)

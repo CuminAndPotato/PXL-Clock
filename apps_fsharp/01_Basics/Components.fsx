@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.8"
+#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -10,7 +10,7 @@ open Pxl.Ui
 // ...we can also make it reusable
 let counter(x, y, color) =
     scene {
-        let! count = useState 0
+        let! count = useState { 0 }
         text.mono6x6($"{count.value}").xy(x, y).color(color)
         do count.value <- count.value + 1
     }

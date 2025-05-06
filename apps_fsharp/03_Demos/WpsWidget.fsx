@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.8"
+#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -13,7 +13,7 @@ let sceneSwitcher (scene1: Vide<_,_>) (scene2: Vide<_,_>) duration =
     scene {
         let! ctx = getCtx ()
 
-        let! currSceneNo = useState 0
+        let! currSceneNo = useState { 0 }
         let! timeLeft = Anim.linear(duration, 0, 1, repeat = Repeat.Loop, autoStart = true)
         let! swipeOffsetAnim = Anim.easeInOutCubic(
             0.7,
@@ -61,7 +61,7 @@ let pushWpsButton =
         ]
 
     let pushButtonAnimation =
-        useMemo pushButtonFrames
+        useMemo { pushButtonFrames }
 
     scene {
         image(pushButtonAnimation, 2, 1)

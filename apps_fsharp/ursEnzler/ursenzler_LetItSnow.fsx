@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.8"
+﻿#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -204,7 +204,7 @@ let getSnowHeight (world: World) c r =
 let snowing =
     scene {
         let! ctx = getCtx()
-        let! worldState = useState (getInitialWorld ctx.now.Hour ctx.now.Minute)
+        let! worldState = useState { getInitialWorld ctx.now.Hour ctx.now.Minute }
 
         let! minChanged = Trigger.valueChanged ctx.now.Minute
         let! frameTrigger = Trigger.valueChanged (ctx.now.Millisecond / 500)

@@ -1,4 +1,4 @@
-#r "nuget: Pxl, 0.0.8"
+#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -37,9 +37,9 @@ let PXL =
 [<AppV1(name = "InitAnimation")>]
 let finalScene =
     scene {
-        let! hue = useState (Random().NextDouble() * 360.0)
-        let! lightness = useState 0.0
-        let! increment = useState 0.01
+        let! hue = useState { Random().NextDouble() * 360.0 }
+        let! lightness = useState { 0.0 }
+        let! increment = useState { 0.01 }
 
         lightness.value <- lightness.value + increment.value
         if (lightness.value > 0.99) then

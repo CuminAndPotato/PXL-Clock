@@ -1,4 +1,4 @@
-﻿#r "nuget: Pxl, 0.0.8"
+﻿#r "nuget: Pxl, 0.0.3"
 
 open System
 open Pxl
@@ -18,7 +18,7 @@ open Pxl.Ui
 
 let blinkingRect x y (fill: Color) =
     scene {
-        let! rectOpacity = useState 0.0
+        let! rectOpacity = useState { 0.0 }
 
         rect.xywh(x, y, 12, 12).fill(fill.opacity(rectOpacity.value))
         
