@@ -11,24 +11,8 @@ open Pxl.Ui
 /// s: Saturation (0.0-1.0)
 /// v: Value (0.0-1.0)
 /// Returns a tuple (R, G, B) where each value is in the range 0-255.
-let hsvToRgb (h: float) (s: float) (v: float) =
-    let c = v * s
-    let x = c * (1.0 - abs ((h / 60.0) % 2.0 - 1.0))
-    let m = v - c
-
-    let r', g', b' =
-        if h < 60.0 then c, x, 0.0
-        elif h < 120.0 then x, c, 0.0
-        elif h < 180.0 then 0.0, c, x
-        elif h < 240.0 then 0.0, x, c
-        elif h < 300.0 then x, 0.0, c
-        else c, 0.0, x
-
-    let r = (r' + m) * 255.0 |> int
-    let g = (g' + m) * 255.0 |> int
-    let b = (b' + m) * 255.0 |> int
-
-    r, g, b
+let hsv (h: float) (s: float) (v: float) =
+    Color.hsv(h, s, v)
 
 let numbers =
     [
@@ -187,9 +171,9 @@ let getNext (world: World): World=
     nextWorld
 
 let alive =
-    hsvToRgb 00 0.8 0.6 |> Color.rgb
+    hsv 00 0.8 0.6
 let empty =
-    hsvToRgb 200 0.6 0.2 |> Color.rgb
+    hsv 200 0.6 0.2
 
 let life =
     scene {

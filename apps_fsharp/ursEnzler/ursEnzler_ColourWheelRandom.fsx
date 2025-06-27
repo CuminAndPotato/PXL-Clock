@@ -33,25 +33,7 @@ module Degrees =
 /// v: Value (0.0-1.0)
 /// Returns a tuple (R, G, B) where each value is in the range 0-255.
 let hsva (h: float) (s: float) (v: float) a =
-    let h = h % 360.0
-    let c = v * s
-    let x = c * (1.0 - abs ((h / 60.0) % 2.0 - 1.0))
-    let m = v - c
-
-    let r', g', b' =
-        if h < 60.0 then c, x, 0.0
-        elif h < 120.0 then x, c, 0.0
-        elif h < 180.0 then 0.0, c, x
-        elif h < 240.0 then 0.0, x, c
-        elif h < 300.0 then x, 0.0, c
-        else c, 0.0, x
-
-    let a = a * 255.0 |> int
-    let r = (r' + m) * 255.0 |> int
-    let g = (g' + m) * 255.0 |> int
-    let b = (b' + m) * 255.0 |> int
-
-    Color.argb(a, r, g, b)
+    { Color.hsv(h, s, v) with a = byte (a * 255.0) }
 
 let time hour minute =
     scene {

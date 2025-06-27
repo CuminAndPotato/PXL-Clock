@@ -21,30 +21,14 @@ Color optimizations: Urs Enzler
 /// s: Saturation (0.0-1.0)
 /// v: Value (0.0-1.0)
 /// Returns a tuple (R, G, B) where each value is in the range 0-255.
-let hsvToRgb (h: float) (s: float) (v: float) =
-    let c = v * s
-    let x = c * (1.0 - abs ((h / 60.0) % 2.0 - 1.0))
-    let m = v - c
-
-    let r', g', b' =
-        if h < 60.0 then c, x, 0.0
-        elif h < 120.0 then x, c, 0.0
-        elif h < 180.0 then 0.0, c, x
-        elif h < 240.0 then 0.0, x, c
-        elif h < 300.0 then x, 0.0, c
-        else c, 0.0, x
-
-    let r = (r' + m) * 255.0 |> int
-    let g = (g' + m) * 255.0 |> int
-    let b = (b' + m) * 255.0 |> int
-
-    r, g, b
+let hsv (h: float) (s: float) (v: float) =
+    Color.hsv(h, s, v)
 
 let time hour minute =
     scene {
         let! ctx = getCtx ()
         let timeText =
-            text.var4x5($"%d{hour}:%02d{minute}").color (hsvToRgb 200.0 1.0 1.0 |> Color.rgb)
+            text.var4x5($"%d{hour}:%02d{minute}").color (hsv 200.0 1.0 1.0)
 
         let textWidth = timeText.measure ()
         let marginLeft = (ctx.width - textWidth) / 2.0
@@ -60,7 +44,7 @@ let seconds seconds =
     let getColor s =
         let delta = seconds - s |> float
         let v = 0.8 * (59.0 - delta) / 60.0 + 0.2
-        hsvToRgb 190.0 1.0 v |> Color.rgb
+        hsv 190.0 1.0 v
     scene {
         let seconds = seconds - 1
         for s in 0..(min 21 seconds) do
@@ -81,7 +65,7 @@ let minutes minutes =
     let getColor m =
         let delta = minutes - m |> float
         let v = 0.8 * (59.0 - delta) / 60.0 + 0.2
-        hsvToRgb 200.0 1.0 v |> Color.rgb
+        hsv 200.0 1.0 v
     scene {
         let minutes = minutes - 1
         for s in 0..(min 19 minutes) do
@@ -102,7 +86,7 @@ let hours hour =
     let getColor h =
         let delta = hour - h |> float
         let v = 0.8 * (23.0 - delta) / 24.0 + 0.2
-        hsvToRgb 210.0 1.0 v |> Color.rgb
+        hsv 210.0 1.0 v
     scene {
         let hour = hour - 1
         for s in 0..(min 9 hour) do
@@ -122,7 +106,7 @@ let hours hour =
 [<AppV1(name = "Urs Enzler - Around The Clock")>]
 let all =
     scene {
-        bg.color(hsvToRgb 195.0 0.9 0.2 |> Color.rgb)
+        bg.color(hsv 195.0 0.9 0.2)
         let! ctx = getCtx ()
         time ctx.now.Hour ctx.now.Minute
         seconds ctx.now.Second
