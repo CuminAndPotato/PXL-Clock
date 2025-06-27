@@ -44,10 +44,10 @@ let finalScene =
         lightness.value <- lightness.value + increment.value
         if (lightness.value > 0.99) then
             increment.value <- increment.value * -1.0
-            hue.value <- (hue.value + 180.0) % 360.0
+            // hue.value <- (hue.value + 180.0) % 360.0
         elif (lightness.value < 0.01) then
             increment.value <- increment.value * -1.0
-            hue.value <- (hue.value + 180.0) % 360.0
+            hue.value <- (hue.value + 90.0) % 360.0
 
         let newPxls = PXL |> Array.map (fun v -> Color.hsv(hue.value, 0.5, v * lightness.value))
         pxls.set(newPxls)

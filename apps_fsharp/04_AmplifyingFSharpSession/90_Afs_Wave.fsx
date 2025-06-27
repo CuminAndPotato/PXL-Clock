@@ -13,7 +13,7 @@ let wave cx cy amplitude wavelength period phaseShift =
     let k = 2.0 * Math.PI / wavelength  // Wave number
     let omega = 2.0 * Math.PI / period  // Angular frequency
 
-    // The wave function u(time, x, y)
+    // The wave function u(time, x, y)®®®
     let waveFunction (time: float) (x: float) (y: float) =
         let r = sqrt ((x - cx) ** 2.0 + (y - cy) ** 2.0)
         let amplitude' = amplitude * sin(k * r - omega * time + phaseShift)
