@@ -3,8 +3,8 @@
   "isRoot": true,
   "tools": {
     "pxl.simulator.host": {
-      "version": "0.0.11",
-      "commands": ["pxl"],
+      "version": "0.0.12",
+      "commands": ["Pxl.Simulator"],
       "rollForward": true
     }
   }
