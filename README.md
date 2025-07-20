@@ -8,7 +8,8 @@ Welcome to the **PXL-Clock** repository! This repo serves as a central hub for:
 We’re excited to see what the community will build around the PXL-Clock. Below you’ll find everything you need to get started.
 
 <p align="center">
-  <img width="640" alt="image" src="https://github.com/user-attachments/assets/4c898f7e-56ae-4a8b-be34-464ad83a5ffb" />
+  <img width="842" height="832" alt="image" src="https://github.com/user-attachments/assets/9b92c9d7-b20b-4316-8104-ac980fa449d5" />
+  <!--<img width="640" alt="image" src="https://github.com/user-attachments/assets/4c898f7e-56ae-4a8b-be34-464ad83a5ffb" />-->
 </p>
 
 ---
