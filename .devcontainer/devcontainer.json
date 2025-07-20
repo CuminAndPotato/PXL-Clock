@@ -3,7 +3,11 @@
   "image": "mcr.microsoft.com/vscode/devcontainers/dotnet:8.0",
   "customizations": {
     "vscode": {
-      "extensions": ["Ionide.Ionide-fsharp"]
+      "extensions": ["Ionide.Ionide-fsharp", "vscode-icons-team.vscode-icons"],
+      "settings": {
+        "workbench.iconTheme": "vscode-icons",
+        "workbench.colorTheme": "Default Dark+"
+      }
     }
   },
   "postCreateCommand": "dotnet tool restore",
