@@ -1,5 +1,5 @@
 {
-  "name": "PXL-Clock Dev Container",
+  "name": "PXL Clock Dev Container",
   "image": "mcr.microsoft.com/vscode/devcontainers/dotnet:8.0",
   "customizations": {
     "vscode": {
@@ -9,6 +9,8 @@
         "workbench.colorTheme": "Default Dark+"
       }
     }
-  },
-  "postCreateCommand": "bash ./start.sh &"
+  }
+  // No - we let the user start the watcher manually to make sure all the instructions are followed.
+  // "postCreateCommand": "bash ./start.sh &",
+  // "forwardPorts": [5001]
 }

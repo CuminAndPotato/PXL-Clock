@@ -1,11 +1,11 @@
-# PXL-Clock
+# PXL Clock
 
-Welcome to the **PXL-Clock** repository! This repo serves as a central hub for:
+Welcome to the **PXL Clock** repository! This repo serves as a central hub for:
 
+- **Resources for creating custom PXL Clock applications**
 - **Issue tracking** and **idea proposals** (hardware, software, use cases, features)
-- **Resources for creating custom PXL-Clock applications**
 
-We’re excited to see what the community will build around the PXL-Clock. Below you’ll find everything you need to get started.
+We’re excited to see what the community will build around the PXL Clock. Below you’ll find everything you need to get started.
 
 <p align="center">
   <a href="https://pxlclock.com">
@@ -16,9 +16,25 @@ We’re excited to see what the community will build around the PXL-Clock. Below
 
 ---
 
-## Order Your PXL-Clock!
+## Quick-Start Development of PXL Clock Apps
 
-Exciting news: ordering the PXL-Clock will soon be possible! 🎉 You can find more information and updates on our official website: [pxlclock.com](https://pxlclock.com)
+Here is the most easy and convenient way to get started with developing PXL Clock apps:
+
+- Create or open a [**Codespace**](https://github.com/CuminAndPotato/PXL-Clock)
+- (!) Wait for the Codespace to initialize (this may take a few minutes)
+- Run the `./start.sh` script in the terminal
+- Open the simulator in your browser at `http://localhost:5001`
+- Open an existing file (e.g. `apps_fsharp/05_UrsEnzler/ursEnzler_ColourWheelDynamic.fsx`)
+- Save the file (`Ctrl+S` or `Cmd+S`) to run it in the simulator
+  - (!) Save the file even if you don’t change anything, to trigger the simulator to run it!
+
+For anything else, have a look at the resources below :) Enjoy!
+
+---
+
+## Order Your PXL Clock!
+
+Exciting news: ordering the PXL Clock will soon be possible! 🎉 You can find more information and updates on our official website: [pxlclock.com](https://pxlclock.com)
 
 We’re currently working on the first 100 units, the MK1 edition! We’re in the certification and refining all the little details that make this a fine product. We’re fully committed to delivering something amazing, and we’ll keep you updated every step of the way.
 
@@ -35,7 +51,7 @@ Thank you for your patience and support! 💡
 Get in touch with us and others on our [**Discord Server**](https://discord.gg/KDbVdKQh5j)
 
 <p align="center">
-  <h3>Join the PXL-Clock Community on Discord</h3>
+  <h3>Join the PXL Clock Community on Discord</h3>
   <a href="https://discord.gg/KDbVdKQh5j">
     <img src="https://img.shields.io/badge/Discord-Join%20Server-blue?style=flat-square&logo=discord" alt="Join Our Discord">
   </a>
@@ -49,9 +65,9 @@ Follow the [**#pxlclock hashtag**](https://bsky.app/hashtag/PXLclock) on **Blues
 
 ## Table of Contents
 
-1. [Order Your PXL-Clock](#order-your-pxl-clock)
+1. [Order Your PXL Clock](#order-your-pxl-clock)
 2. [Get In Touch](#get-in-touch)
-3. [About PXL-Clock](#about-pxl-clock)
+3. [About PXL Clock](#about-pxl-clock)
 4. [Releases](#releases)
 5. [Filing Issues and Ideas](#filing-issues-and-ideas)
 6. [Developing Your Own Apps](#developing-your-own-apps)
@@ -60,25 +76,25 @@ Follow the [**#pxlclock hashtag**](https://bsky.app/hashtag/PXLclock) on **Blues
 
 ---
 
-## About PXL-Clock
+## About PXL Clock
 
-The **PXL-Clock** is a device designed to display various fun clocks, animations, short stories, visuals and other creative things - all on a 24x24 pixel display. Whether you want to keep track of the current time in a futuristic manner or develop your own mini-apps to run on the clock, this project provides a flexible platform for creativity.
+The **PXL Clock** is a device designed to display various fun clocks, animations, short stories, visuals and other creative things - all on a 24x24 pixel display. Whether you want to keep track of the current time in a futuristic manner or develop your own mini-apps to run on the clock, this project provides a flexible platform for creativity.
 
 ---
 
 ## Releases
 
-You’ll find our official firmware and software packages under the [**Releases**](../../releases) section. The PXL-Clock updates itself over-the-air, so no manual steps required.
+You’ll find our official firmware and software packages under the [**Releases**](../../releases) section. The PXL Clock updates itself over-the-air, so no manual steps required.
 
 ---
 
 ## Filing Issues and Ideas
 
-Have an idea for a new feature or discovered a bug? Help us improve the PXL-Clock by creating a new issue in this repository. We welcome:
+Have an idea for a new feature or discovered a bug? Help us improve the PXL Clock by creating a new issue in this repository. We welcome:
 
 - Hardware-related feedback or design modifications
 - Software feature requests, improvements, or bug reports
-- Use case suggestions or creative ways to integrate PXL-Clock into your projects
+- Use case suggestions or creative ways to integrate PXL Clock into your projects
 
 Just head over to the [**Issues**](../../issues) tab and click **New Issue** to get started.
 
@@ -91,7 +107,7 @@ Just head over to the [**Issues**](../../issues) tab and click **New Issue** to 
 
 Whether you’re a seasoned developer or new to programming, we hope these resources will jumpstart your creativity.
 
-You can use this repository as a reference point for developing your own custom PXL-Clock applications. We provide examples, documentation, and tools to help you get started:
+You can use this repository as a reference point for developing your own custom PXL Clock applications. We provide examples, documentation, and tools to help you get started:
 
 To program PXL-Apps, you can either **start a Codespace (recommended)** or **set up locally with VSCode**.
 
@@ -147,14 +163,14 @@ Follow-up PRs (updates) for your app in case you want to improve it are welcome!
 
 Check out the sprite 🖼️ `./apps_fsharp/03_ Demos/assets/pizzaMampf.png`) and swap them with your own custom artwork to personalize your app.
 
-### Deploying an App or an Image to the PXL-Clock
+### Deploying an App or an Image to the PXL Clock
 
-Here are 2 ways of deploying an app or an image to the PXL-Clock. Keep in mind that
+Here are 2 ways of deploying an app or an image to the PXL Clock. Keep in mind that
 
-- the PXL-Clock needs to be connected to the same network as your computer.
+- the PXL Clock needs to be connected to the same network as your computer.
 - the artifacts you deploy are not persistent (for now) and will be lost after a reboot.
 
-There are two ways to deploy an app or an image to the PXL-Clock:
+There are two ways to deploy an app or an image to the PXL Clock:
 
 **Using the VSCode Build Tasks**
 
@@ -174,7 +190,7 @@ In your terminal, run the following scripts:
 
 ## Contributing
 
-Contributions from the community are highly encouraged. If you want to help make PXL-Clock better, you can:
+Contributions from the community are highly encouraged. If you want to help make PXL Clock better, you can:
 
 1. **Create an Issue:** File a new issue for suggestions, bug reports, or feature requests.
 2. **Submit a Pull Request:** Fork this repo, make your changes, and submit a pull request. Make sure to include a clear description of what you’ve changed or fixed.
@@ -187,4 +203,4 @@ see: [LICENSE.md](LICENSE.md)
 
 ---
 
-Thank you for your interest in the PXL-Clock! We look forward to seeing your ideas and contributions. If you have any questions or suggestions, feel free to open an issue or start a discussion. Let’s make time more fun—together!
+Thank you for your interest in the PXL Clock! We look forward to seeing your ideas and contributions. If you have any questions or suggestions, feel free to open an issue or start a discussion. Let’s make time more fun—together!
