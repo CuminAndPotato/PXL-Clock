@@ -6,5 +6,7 @@
       "extensions": ["Ionide.Ionide-fsharp"]
     }
   },
-  "postCreateCommand": "dotnet tool restore"
+  "postCreateCommand": "dotnet tool restore",
+  // Automatically start simulator + F# watcher watcher in Codespace
+  "postStartCommand": "bash ./build/codespace-watcher.sh &"
 }
