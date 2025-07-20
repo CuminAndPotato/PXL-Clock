@@ -18,5 +18,5 @@ while true; do
     ./build/start-fsharp-watcher.sh &
   fi
 
-  sleep 10
+  sleep 2
 done
