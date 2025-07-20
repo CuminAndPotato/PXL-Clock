@@ -2,7 +2,6 @@
 
 Welcome to the **PXL-Clock** repository! This repo serves as a central hub for:
 
-- **Official releases** (firmware, software, etc.)  
 - **Issue tracking** and **idea proposals** (hardware, software, use cases, features)  
 - **Resources for creating custom PXL-Clock applications**
 
