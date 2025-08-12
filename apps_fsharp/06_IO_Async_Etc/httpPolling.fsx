@@ -87,7 +87,7 @@ let all =
     scene {
         bg.color(Colors.darkBlue)
 
-        let! randomValue = Task.poll 2.5 -1 getRandomValue
+        let! randomValue = Task.poll 1.0 -1 getRandomValue
         // let! randomValue = Task.runOnce -1 getRandomValue
 
         text
