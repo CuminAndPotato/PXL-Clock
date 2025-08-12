@@ -72,14 +72,34 @@ module Task =
 // ------------------------------------------------------------
 
 let getRandomValue _ =
-    // hard to believe that no one ever complained not being able
-    // to pass cancellation token when sending requests in FsHttp
+    // In F#, pipelining is a common pattern.
     http {
         GET "https://csrng.net/csrng/csrng.php?min=1&max=100"
     }
     |> Request.sendTAsync
     |> Task.map Response.deserializeJson<list<{| random: int |}>>
     |> Task.map _.Head.random
+
+let getRandomValueCSharpStyle _ =
+    // "task" is a bit like 'async' - but not on method-level, but on expression-level.
+    // It means: "we can use 'let!' (focus on !) - not only 'let'"
+    // '!' in the context of Tasks means:
+    // "On the right side, we have Task<T>, on the left side, we have a value of T"
+    // So, '!' is a bit like 'await'.
+    task {
+        let! response =
+            http {
+                GET "https://csrng.net/csrng/csrng.php?min=1&max=100"
+            }
+            |> Request.sendTAsync
+
+        let randomValue =
+            response
+            |> Response.deserializeJson<list<{| random: int |}>>
+            |> _.Head.random
+
+        return randomValue
+    }
 
 
 [<AppV1(name = "Cumin And Potato - Random Number via HTTP")>]
