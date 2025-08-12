@@ -25,27 +25,27 @@ HINT:
 
 /// TODO: Move to PXL API?
  
-type Task =
+module Task =
+    
+    let private startTask (newTask: _ -> Task<_>) =
+        let cts = new CancellationTokenSource()
+        let t = newTask cts.Token
+        if t.Status = TaskStatus.Created then
+            do t.Start()
+        {| task = t; cts = cts |}
 
     /// Starts immediately a new poll and restarts every `durationInS` seconds.
     /// Cancels current polls when restarting.
     /// Retains the last result (initially defaultValue) and until a new result is available.
-    static member poll(durationInS, defaultValue: 'a, newPollTask: _ -> Task<'a>) =
+    let poll durationInS (defaultValue: 'a) (newPollTask: _ -> Task<'a>) =
         scene {
-            let startNewPoll () =
-                let cts = new CancellationTokenSource()
-                let t = newPollTask cts.Token
-                if t.Status = TaskStatus.Created then
-                    do t.Start()
-                {| task = t; cts = cts |}
-
             let! lastPollResult = useState { defaultValue }
-            let! pollState = useState { startNewPoll () }
+            let! pollState = useState { startTask newPollTask }
             let! timer = Timer.interval(durationInS)
 
             if timer.isElapsed then
                 pollState.value.cts.Cancel()
-                pollState.value <- startNewPoll ()
+                pollState.value <- startTask newPollTask
 
             lastPollResult.value <-
                 match pollState.value.task.Status with
@@ -55,9 +55,11 @@ type Task =
             return lastPollResult.value
         }
 
+    let runOnce defaultValue newPollTask =
+        poll Double.PositiveInfinity defaultValue newPollTask
 
-// Task await pipe fwd
-module Task =
+
+    // don't move this to PXL API
     let map f t =
         task {
             let! r = t
@@ -85,7 +87,8 @@ let all =
     scene {
         bg.color(Colors.darkBlue)
 
-        let! randomValue = Task.poll(2.5, -1, getRandomValue)
+        let! randomValue = Task.poll 2.5 -1 getRandomValue
+        // let! randomValue = Task.runOnce -1 getRandomValue
 
         text
             .mono4x5($"{randomValue}")
